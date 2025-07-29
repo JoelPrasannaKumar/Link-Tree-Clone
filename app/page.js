@@ -1,8 +1,10 @@
 "use client"
+import { Suspense } from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-export default function Home() {
+
+function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [text, settext] = useState("");
@@ -54,5 +56,13 @@ export default function Home() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
