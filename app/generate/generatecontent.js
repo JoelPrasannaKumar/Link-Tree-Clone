@@ -47,7 +47,7 @@ const Generate = () => {
       redirect: "follow"
     };
 
-    const r = await fetch("https://link-tree-clone-9ar7.vercel.app/generate", requestOptions)
+    const r = await fetch("/api/generate", requestOptions)
     const result = await r.json()
     if (result.success) {
       toast.success(result.message)
